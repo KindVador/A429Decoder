@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "a429word.h"
+#include <a429word.hpp>
 #include <arinc429widget.h>
 
 QT_BEGIN_NAMESPACE
