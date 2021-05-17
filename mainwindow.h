@@ -20,6 +20,7 @@ public:
 public slots:
     void updateView();
     void updateBnrValue();
+    void showAboutWindow();
 
 private slots:
     void valueChangedAction(const QString& newValue);

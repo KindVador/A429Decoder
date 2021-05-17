@@ -2,14 +2,15 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 #include <cmath>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     setWindowTitle("ARINC 429 Word Decoder");
     a429Word = new A429Word();
+    adjustSize();
 
     // make connections
     connect(ui->a429widget, SIGNAL(rawValueChanged(QString)), this, SLOT(valueChangedAction(QString)));
@@ -20,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->a429widget, SIGNAL(bnrResolutionChanged(double)), this, SLOT(updateBnrRangeValue(double)));
     connect(ui->a429widget, SIGNAL(bnrRangeChanged(double)), this, SLOT(updateBnrResolutionValue(double)));
     connect(ui->a429widget, SIGNAL(bnrIsSignedChanged(int)), this, SLOT(updateBnrIsSignedValue(int)));
+    connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(showAboutWindow()));
 
     // init raw value
     ui->a429widget->setRawValue(QString("00000000"));
@@ -55,6 +57,15 @@ void MainWindow::updateBnrValue()
     double bnrValue = a429Word->getBnrValue(ui->a429widget->getBnrIsSigned(), 29, ui->a429widget->getBnrMsbPosition(), ui->a429widget->getBnrLsbPosition(), ui->a429widget->getBnrResolution());
     qDebug() << "BNR VALUE: " << bnrValue;
     ui->a429widget->displayBnrValue(bnrValue);
+}
+
+void MainWindow::showAboutWindow()
+{
+    QMessageBox msgBox;
+    msgBox.setWindowTitle("About A429Decoder...");
+    msgBox.setIcon(QMessageBox::Information);
+    msgBox.setText("version: 2021.1\n\nSource code available at https://github.com/KindVador/A429Decoder\n\nPlease report any issue by opening a PR in the GitHub repository.");
+    msgBox.exec();
 }
 
 void MainWindow::valueChangedAction(const QString &newValue)
