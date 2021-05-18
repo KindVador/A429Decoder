@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle("ARINC 429 Word Decoder");
+    setWindowIcon(QIcon(":/icons/decode512.png"));
     a429Word = new A429Word();
     adjustSize();
 
@@ -64,7 +65,7 @@ void MainWindow::showAboutWindow()
     QMessageBox msgBox;
     msgBox.setWindowTitle("About A429Decoder...");
     msgBox.setIcon(QMessageBox::Information);
-    msgBox.setText("version: 2021.1\n\nSource code available at https://github.com/KindVador/A429Decoder\n\nPlease report any issue by opening a PR in the GitHub repository.");
+    msgBox.setText("version: 2021.1\n\nSource code available at https://github.com/KindVador/A429Decoder\n\nPlease report any issue by opening a PR in the GitHub repository.\n\n Icons by Freepik https://www.freepik.com");
     msgBox.exec();
 }
 

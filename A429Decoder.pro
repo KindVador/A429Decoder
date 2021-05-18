@@ -21,6 +21,19 @@ FORMS += \
     arinc429widget.ui \
     mainwindow.ui
 
+RESOURCES += \
+    resources.qrc
+
+# Set Icon application on macOS
+macx {
+    ICON = decode.icns
+}
+
+#set Icon application on Windows
+win32 {
+    RC_ICONS = decode.ico
+}
+
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
