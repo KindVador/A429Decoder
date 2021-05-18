@@ -134,7 +134,7 @@ void Arinc429Widget::setBnrResolutionValue(const double newValue)
     ui->bnr_resolution_spin_box->setValue(newValue);
 }
 
-void Arinc429Widget::setBnrRangeValue(const int newValue)
+void Arinc429Widget::setBnrRangeValue(const double newValue)
 {
     ui->bnr_range_spin_box->setValue(newValue);
 }

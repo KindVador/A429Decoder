@@ -27,7 +27,7 @@ public:
     double getBnrResolution();
     bool getBnrIsSigned();
     void setBnrResolutionValue(const double newValue);
-    void setBnrRangeValue(const int newValue);
+    void setBnrRangeValue(const double newValue);
     double getBnrRangeValue();
     void displayBnrValue(const double value);
     QPushButton *getPushButtonForBit(const int bitNumber);

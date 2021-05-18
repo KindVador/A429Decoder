@@ -2794,10 +2794,13 @@
            <item>
             <widget class="QDoubleSpinBox" name="bnr_range_spin_box">
              <property name="decimals">
-              <number>3</number>
+              <number>5</number>
+             </property>
+             <property name="minimum">
+              <double>0.001000000000000</double>
              </property>
              <property name="maximum">
-              <double>999999.989999999990687</double>
+              <double>999998.989999999990687</double>
              </property>
              <property name="value">
               <double>262144.000000000000000</double>
