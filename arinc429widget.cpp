@@ -33,10 +33,14 @@ Arinc429Widget::Arinc429Widget(QWidget *parent) :
     // make connections
     connect(ui->lineEdit, SIGNAL(textChanged(QString)), this, SLOT(inputValueChanged(QString)));
     connect(ui->label_msb_first_checkbox, SIGNAL(stateChanged(int)), this, SLOT(labelMsbFirstChanged(int)));
+
     // DW block
+    ui->gridLayoutDW->setSpacing(0);
+    ui->gridLayoutDW->setAlignment(Qt::AlignHCenter);
     for (int i = 1; i < 33; ++i) {
         connect(getPushButtonForBit(i), &QPushButton::clicked, this, [=](){ qDebug() << "--> SIGNAL dwBitClicked(" << i << ")"; emit this->dwBitClicked(i); });
     }
+
     // BNR block
     connect(ui->bnr_msb_spin_box, SIGNAL(valueChanged(int)), this, SLOT(updateBnrDefinition()));
     connect(ui->bnr_lsb_spin_box, SIGNAL(valueChanged(int)), this, SLOT(updateBnrDefinition()));
