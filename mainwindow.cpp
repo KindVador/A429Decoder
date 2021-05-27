@@ -109,7 +109,7 @@ void MainWindow::updateDwBlock()
 void MainWindow::updateMsbLsbLimits()
 {
     qDebug() << "updateMsbLsbLimits()";
-    // updateBnrResolutionValue();
+    updateView();
 }
 
 void MainWindow::updateBnrRangeValue(const double& resolution)
