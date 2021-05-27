@@ -68,13 +68,13 @@ void Arinc429Widget::setLabelValue(const QString strValue)
     ui->LabelValue->setText(strValue);
     // update the DW block
     if (ui->label_msb_first_checkbox->isChecked()) {
-        ui->widgetDW->setFirstLabelDigit(strValue[2].toUpper());
-        ui->widgetDW->setSecondLabelDigit(strValue[1].toUpper());
-        ui->widgetDW->setThirdLabelDigit(strValue[0].toUpper());
-    } else {
         ui->widgetDW->setFirstLabelDigit(strValue[0].toUpper());
         ui->widgetDW->setSecondLabelDigit(strValue[1].toUpper());
         ui->widgetDW->setThirdLabelDigit(strValue[2].toUpper());
+    } else {
+        ui->widgetDW->setFirstLabelDigit(strValue[2].toUpper());
+        ui->widgetDW->setSecondLabelDigit(strValue[1].toUpper());
+        ui->widgetDW->setThirdLabelDigit(strValue[0].toUpper());
     }
 }
 
