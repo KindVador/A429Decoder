@@ -33,10 +33,12 @@ Arinc429Widget::Arinc429Widget(QWidget *parent) :
     // make connections
     connect(ui->lineEdit, SIGNAL(textChanged(QString)), this, SLOT(inputValueChanged(QString)));
     connect(ui->label_msb_first_checkbox, SIGNAL(stateChanged(int)), this, SLOT(labelMsbFirstChanged(int)));
+
     // DW block
     for (int i = 1; i < 33; ++i) {
         connect(getPushButtonForBit(i), &QPushButton::clicked, this, [=](){ qDebug() << "--> SIGNAL dwBitClicked(" << i << ")"; emit this->dwBitClicked(i); });
     }
+
     // BNR block
     connect(ui->bnr_msb_spin_box, SIGNAL(valueChanged(int)), this, SLOT(updateBnrDefinition()));
     connect(ui->bnr_lsb_spin_box, SIGNAL(valueChanged(int)), this, SLOT(updateBnrDefinition()));
@@ -66,13 +68,13 @@ void Arinc429Widget::setLabelValue(const QString strValue)
     ui->LabelValue->setText(strValue);
     // update the DW block
     if (ui->label_msb_first_checkbox->isChecked()) {
-        ui->dw_first_label_digit->setText(strValue[2].toUpper());
-        ui->dw_second_label_digit->setText(strValue[1].toUpper());
-        ui->dw_third_label_digit->setText(strValue[0].toUpper());
+        ui->widgetDW->setFirstLabelDigit(strValue[0].toUpper());
+        ui->widgetDW->setSecondLabelDigit(strValue[1].toUpper());
+        ui->widgetDW->setThirdLabelDigit(strValue[2].toUpper());
     } else {
-        ui->dw_first_label_digit->setText(strValue[0].toUpper());
-        ui->dw_second_label_digit->setText(strValue[1].toUpper());
-        ui->dw_third_label_digit->setText(strValue[2].toUpper());
+        ui->widgetDW->setFirstLabelDigit(strValue[2].toUpper());
+        ui->widgetDW->setSecondLabelDigit(strValue[1].toUpper());
+        ui->widgetDW->setThirdLabelDigit(strValue[0].toUpper());
     }
 }
 
@@ -81,7 +83,13 @@ void Arinc429Widget::setSdiValue(const QString strValue)
     // update the main block
     ui->SDIValue->setText(strValue);
     // update the DW block
-    ui->dw_sdi_value->setText(strValue);
+    ui->widgetDW->setSdiValue(strValue);
+}
+
+void Arinc429Widget::setPayloadValue(const QString strValue)
+{
+    // update the DW block
+    ui->widgetDW->setPayloadValue(strValue);
 }
 
 void Arinc429Widget::setSsmValue(const QString strValue)
@@ -89,7 +97,7 @@ void Arinc429Widget::setSsmValue(const QString strValue)
     // update the main block
     ui->SSMValue->setText(strValue);
     // update the DW block
-    ui->dw_ssm_value->setText(strValue);
+    ui->widgetDW->setSsmValue(strValue);
 }
 
 void Arinc429Widget::setParityValue(const QString strValue)
@@ -97,7 +105,7 @@ void Arinc429Widget::setParityValue(const QString strValue)
     // update the main block
     ui->ParityValue->setText(strValue);
     // update the DW block
-    ui->dw_parity_value->setText(strValue);
+    ui->widgetDW->setParityValue(strValue);
 }
 
 QPushButton *Arinc429Widget::getTextFieldForBit(const int i)
@@ -165,6 +173,8 @@ void Arinc429Widget::parityValidity(const bool& isValid)
         ui->lblParity->setStyleSheet("QLabel { color : red;}");
         ui->ParityValue->setStyleSheet("QLabel { color : red;}");
     }
+    // update DW block
+    ui->widgetDW->parityValidity(isValid);
 }
 
 void Arinc429Widget::inputValueChanged(const QString &newValue)
@@ -175,18 +185,7 @@ void Arinc429Widget::inputValueChanged(const QString &newValue)
 
 void Arinc429Widget::labelMsbFirstChanged(const int& state)
 {
-    if (state)
-    {
-        ui->dw_first_label_digit->setMinimumSize(90, 20);
-        ui->dw_second_label_digit->setMinimumSize(90, 20);
-        ui->dw_third_label_digit->setMinimumSize(55, 20);
-    }
-    else
-    {
-        ui->dw_first_label_digit->setMinimumSize(55, 20);
-        ui->dw_second_label_digit->setMinimumSize(90, 20);
-        ui->dw_third_label_digit->setMinimumSize(90, 20);
-    }
+    ui->widgetDW->swapLabelDigits();
     qDebug() << "--> SIGNAL labelNumberMsbFirstChanged(" << state << ")";
     emit labelNumberMsbFirstChanged(state);
 }

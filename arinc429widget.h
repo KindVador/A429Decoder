@@ -19,6 +19,7 @@ public:
     void setRawValue(const QString strValue);
     void setLabelValue(const QString strValue);
     void setSdiValue(const QString strValue);
+    void setPayloadValue(const QString strValue);
     void setSsmValue(const QString strValue);
     void setParityValue(const QString strValue);
     QPushButton* getTextFieldForBit(const int i);
