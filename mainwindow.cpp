@@ -41,6 +41,8 @@ void MainWindow::updateView()
     ui->a429widget->setLabelValue(label);
     QString sdi = QString("%1").arg(a429Word->sdi(), 1, 10);
     ui->a429widget->setSdiValue(sdi);
+    QString payload = QString("%1").arg(a429Word->payload(), 8, 10);
+    ui->a429widget->setPayloadValue(payload);
     QString ssm = QString("%1").arg(a429Word->ssm(), 1, 10);
     ui->a429widget->setSsmValue(ssm);
     QString parity = QString("%1").arg(a429Word->parity(), 1, 10);
@@ -65,7 +67,7 @@ void MainWindow::showAboutWindow()
     QMessageBox msgBox;
     msgBox.setWindowTitle("About A429Decoder...");
     msgBox.setIcon(QMessageBox::Information);
-    msgBox.setText("version: 2021.1\n\nSource code available at https://github.com/KindVador/A429Decoder\n\nPlease report any issue by opening a PR in the GitHub repository.\n\n Icons by Freepik https://www.freepik.com");
+    msgBox.setText("version: 2021.1\n\nSource code available at https://github.com/KindVador/A429Decoder\n\nPlease report any issue by opening a PR in the GitHub repository.\n\nIcons by Freepik https://www.freepik.com");
     msgBox.exec();
 }
 
