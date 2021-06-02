@@ -61,9 +61,18 @@ void A429DiscreteWordWidget::setSsmValue(const QString strValue)
     setSsmValue(strValue.toInt());
 }
 
+void A429DiscreteWordWidget::setParityValue(const int value)
+{
+    if (value) {
+        ui->dw_parity_value->setText("1");
+    } else {
+        ui->dw_parity_value->setText("0");
+    }
+}
+
 void A429DiscreteWordWidget::setParityValue(const QString strValue)
 {
-    ui->dw_parity_value->setText(strValue);
+    setParityValue(strValue.toInt());
 }
 
 void A429DiscreteWordWidget::setPayloadValue(const QString strValue)

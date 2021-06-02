@@ -21,6 +21,7 @@ public:
     void setSdiValue(const QString strValue);
     void setSsmValue(const int value);
     void setSsmValue(const QString strValue);
+    void setParityValue(const int value);
     void setParityValue(const QString strValue);
     void setPayloadValue(const QString strValue);
     void swapLabelDigits();
