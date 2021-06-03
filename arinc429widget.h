@@ -40,6 +40,7 @@ private slots:
     void inputValueChanged(const QString& newValue);
     void labelMsbFirstChanged(const int& state);
     void updateBnrDefinition();
+    void internalParityTypeChanged(const int& state);
 
 signals:
     void rawValueChanged(const QString&);
@@ -50,6 +51,7 @@ signals:
     void bnrRangeChanged(const double&);
     void bnrResolutionChanged(const double&);
     void bnrIsSignedChanged(const int&);
+    void parityTypeChanged(const int&);
 
 private:
     Ui::Arinc429Widget *ui;

@@ -33,6 +33,7 @@ Arinc429Widget::Arinc429Widget(QWidget *parent) :
     // make connections
     connect(ui->lineEdit, SIGNAL(textChanged(QString)), this, SLOT(inputValueChanged(QString)));
     connect(ui->label_msb_first_checkbox, SIGNAL(stateChanged(int)), this, SLOT(labelMsbFirstChanged(int)));
+    connect(ui->oddParityCheckBox, SIGNAL(stateChanged(int)), this, SLOT(internalParityTypeChanged(int)));
 
     // DW block
     for (int i = 1; i < 33; ++i) {
@@ -175,6 +176,12 @@ void Arinc429Widget::parityValidity(const bool& isValid)
     }
     // update DW block
     ui->widgetDW->parityValidity(isValid);
+}
+
+void Arinc429Widget::internalParityTypeChanged(const int &state)
+{
+    qDebug() << "--> SIGNAL internalParityTypeChanged(" << state << ")";
+    emit parityTypeChanged(state);
 }
 
 void Arinc429Widget::inputValueChanged(const QString &newValue)

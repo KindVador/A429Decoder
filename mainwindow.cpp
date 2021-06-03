@@ -23,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->a429widget, SIGNAL(bnrRangeChanged(double)), this, SLOT(updateBnrResolutionValue(double)));
     connect(ui->a429widget, SIGNAL(bnrIsSignedChanged(int)), this, SLOT(updateBnrIsSignedValue(int)));
     connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(showAboutWindow()));
+    connect(ui->a429widget, SIGNAL(parityTypeChanged(int)), this, SLOT(parityTypeChanged(int)));
 
     // init raw value
     ui->a429widget->setRawValue(QString("00000000"));
@@ -134,4 +135,11 @@ void MainWindow::updateBnrIsSignedValue(const int& state)
 {
     qDebug() << "updateBnrIsSignedValue(" << state << ")";
     updateBnrValue();
+}
+
+void MainWindow::parityTypeChanged(const int &state)
+{
+    qDebug() << "parityTypeChanged("<< state << ")";
+    a429Word->setIsOddParity(state);
+    updateView();
 }

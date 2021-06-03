@@ -238,6 +238,16 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QCheckBox" name="oddParityCheckBox">
+       <property name="text">
+        <string>Odd Parity</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item>

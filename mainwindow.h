@@ -31,6 +31,7 @@ private slots:
     void updateBnrRangeValue(const double& resolution);
     void updateBnrResolutionValue(const double& bnrRange);
     void updateBnrIsSignedValue(const int& state);
+    void parityTypeChanged(const int& state);
 
 private:
     Ui::MainWindow *ui;
