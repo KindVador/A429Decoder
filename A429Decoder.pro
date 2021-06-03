@@ -16,8 +16,8 @@ SOURCES += \
 
 HEADERS += \
     a429discretewordwidget.hpp \
-    arinc429widget.h \
-    mainwindow.h
+    arinc429widget.hpp \
+    mainwindow.hpp
 
 FORMS += \
     a429discretewordwidget.ui \

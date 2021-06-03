@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include <a429word.hpp>
-#include <arinc429widget.h>
+#include <arinc429widget.hpp>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

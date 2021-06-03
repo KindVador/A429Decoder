@@ -1,4 +1,4 @@
-#include "arinc429widget.h"
+#include "arinc429widget.hpp"
 #include "ui_arinc429widget.h"
 #include <QObject>
 #include <QDebug>
