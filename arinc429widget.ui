@@ -322,7 +322,7 @@
       </layout>
      </item>
      <item>
-      <widget class="A429DiscreteWordWidget" name="widgetDW" native="true">
+      <widget class="A429DwWidget" name="DwWidget" native="true">
        <property name="minimumSize">
         <size>
          <width>0</width>
@@ -455,15 +455,15 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>A429DiscreteWordWidget</class>
-   <extends>QWidget</extends>
-   <header>a429discretewordwidget.hpp</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>A429BnrWidget</class>
    <extends>QWidget</extends>
    <header>a429bnrwidget.hpp</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>A429DwWidget</class>
+   <extends>QWidget</extends>
+   <header>a429dwwidget.hpp</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

@@ -19,11 +19,6 @@ public:
     // GETTERS
     Ui::A429BnrWidget *getUi() const;
 
-    // METHODS
-//    void setMsbValue(const int& value);
-//    void setLsbValue(const int& value);
-//    void setResolutionValue(const double& value);
-
 private:
     Ui::A429BnrWidget *ui;
 };

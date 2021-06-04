@@ -20,6 +20,9 @@ Arinc429Widget::Arinc429Widget(QWidget *parent) :
     ui->lineEdit->setMaxLength(8);  // set the maximum length of lineEdit (Hexadecimal input value) to 8 hexadecimal characters
     ui->lineEdit->setInputMask("HHHHHHHH");
 
+    // init of the DW block
+    dwWidget = ui->DwWidget->getUi();
+
     // init of the BNR block
     bnrWidget = ui->BnrWidget->getUi();
     bnrWidget->bnr_msb_spin_box->setValue(28);
@@ -70,13 +73,13 @@ void Arinc429Widget::setLabelValue(const QString strValue)
     ui->LabelValue->setText(strValue);
     // update the DW block
     if (ui->label_msb_first_checkbox->isChecked()) {
-        ui->widgetDW->setFirstLabelDigit(strValue[0].toUpper());
-        ui->widgetDW->setSecondLabelDigit(strValue[1].toUpper());
-        ui->widgetDW->setThirdLabelDigit(strValue[2].toUpper());
+        ui->DwWidget->setFirstLabelDigit(strValue[0].toUpper());
+        ui->DwWidget->setSecondLabelDigit(strValue[1].toUpper());
+        ui->DwWidget->setThirdLabelDigit(strValue[2].toUpper());
     } else {
-        ui->widgetDW->setFirstLabelDigit(strValue[2].toUpper());
-        ui->widgetDW->setSecondLabelDigit(strValue[1].toUpper());
-        ui->widgetDW->setThirdLabelDigit(strValue[0].toUpper());
+        ui->DwWidget->setFirstLabelDigit(strValue[2].toUpper());
+        ui->DwWidget->setSecondLabelDigit(strValue[1].toUpper());
+        ui->DwWidget->setThirdLabelDigit(strValue[0].toUpper());
     }
 }
 
@@ -85,13 +88,13 @@ void Arinc429Widget::setSdiValue(const QString strValue)
     // update the main block
     ui->SDIValue->setText(strValue);
     // update the DW block
-    ui->widgetDW->setSdiValue(strValue);
+    ui->DwWidget->setSdiValue(strValue);
 }
 
 void Arinc429Widget::setPayloadValue(const QString strValue)
 {
     // update the DW block
-    ui->widgetDW->setPayloadValue(strValue);
+    ui->DwWidget->setPayloadValue(strValue);
 }
 
 void Arinc429Widget::setSsmValue(const QString strValue)
@@ -99,7 +102,7 @@ void Arinc429Widget::setSsmValue(const QString strValue)
     // update the main block
     ui->SSMValue->setText(strValue);
     // update the DW block
-    ui->widgetDW->setSsmValue(strValue);
+    ui->DwWidget->setSsmValue(strValue);
 }
 
 void Arinc429Widget::setParityValue(const QString strValue)
@@ -107,7 +110,7 @@ void Arinc429Widget::setParityValue(const QString strValue)
     // update the main block
     ui->ParityValue->setText(strValue);
     // update the DW block
-    ui->widgetDW->setParityValue(strValue);
+    ui->DwWidget->setParityValue(strValue);
 }
 
 QPushButton *Arinc429Widget::getTextFieldForBit(const int i)
@@ -176,7 +179,7 @@ void Arinc429Widget::parityValidity(const bool& isValid)
         ui->ParityValue->setStyleSheet("QLabel { color : red;}");
     }
     // update DW block
-    ui->widgetDW->parityValidity(isValid);
+    ui->DwWidget->parityValidity(isValid);
 }
 
 void Arinc429Widget::internalParityTypeChanged(const int &state)
@@ -193,7 +196,7 @@ void Arinc429Widget::inputValueChanged(const QString &newValue)
 
 void Arinc429Widget::labelMsbFirstChanged(const int& state)
 {
-    ui->widgetDW->swapLabelDigits();
+    ui->DwWidget->swapLabelDigits();
     qDebug() << "--> SIGNAL labelNumberMsbFirstChanged(" << state << ")";
     emit labelNumberMsbFirstChanged(state);
 }

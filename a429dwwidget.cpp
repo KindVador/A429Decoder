@@ -1,41 +1,40 @@
-#include "a429discretewordwidget.hpp"
-#include "ui_a429dirscretewordwidget.h"
+#include "a429dwwidget.hpp"
 
-A429DiscreteWordWidget::A429DiscreteWordWidget(QWidget *parent) :
+A429DwWidget::A429DwWidget(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::A429DiscreteWordWidget)
+    ui(new Ui::A429DwWidget)
 {
     ui->setupUi(this);
     ui->gridLayoutDW->setSpacing(0);
     ui->gridLayoutDW->setAlignment(Qt::AlignHCenter);
 }
 
-A429DiscreteWordWidget::~A429DiscreteWordWidget()
+A429DwWidget::~A429DwWidget()
 {
     delete ui;
 }
 
-void A429DiscreteWordWidget::setFirstLabelDigit(const QString strValue)
+void A429DwWidget::setFirstLabelDigit(const QString strValue)
 {
     ui->dw_first_label_digit->setText(strValue);
 }
 
-void A429DiscreteWordWidget::setSecondLabelDigit(const QString strValue)
+void A429DwWidget::setSecondLabelDigit(const QString strValue)
 {
     ui->dw_second_label_digit->setText(strValue);
 }
 
-void A429DiscreteWordWidget::setThirdLabelDigit(const QString strValue)
+void A429DwWidget::setThirdLabelDigit(const QString strValue)
 {
     ui->dw_third_label_digit->setText(strValue);
 }
 
-void A429DiscreteWordWidget::setSdiValue(const QString strValue)
+void A429DwWidget::setSdiValue(const QString strValue)
 {
     ui->dw_sdi_value->setText(strValue);
 }
 
-void A429DiscreteWordWidget::setSsmValue(const int value)
+void A429DwWidget::setSsmValue(const int value)
 {
     switch (value) {
     case 0:
@@ -56,12 +55,12 @@ void A429DiscreteWordWidget::setSsmValue(const int value)
     }
 }
 
-void A429DiscreteWordWidget::setSsmValue(const QString strValue)
+void A429DwWidget::setSsmValue(const QString strValue)
 {
     setSsmValue(strValue.toInt());
 }
 
-void A429DiscreteWordWidget::setParityValue(const int value)
+void A429DwWidget::setParityValue(const int value)
 {
     if (value) {
         ui->dw_parity_value->setText("1");
@@ -70,17 +69,17 @@ void A429DiscreteWordWidget::setParityValue(const int value)
     }
 }
 
-void A429DiscreteWordWidget::setParityValue(const QString strValue)
+void A429DwWidget::setParityValue(const QString strValue)
 {
     setParityValue(strValue.toInt());
 }
 
-void A429DiscreteWordWidget::setPayloadValue(const QString strValue)
+void A429DwWidget::setPayloadValue(const QString strValue)
 {
     ui->dw_payload_value->setText(strValue);
 }
 
-void A429DiscreteWordWidget::swapLabelDigits()
+void A429DwWidget::swapLabelDigits()
 {
     QString firstDigit = ui->dw_first_label_digit->text();
     ui->dw_first_label_digit->setText(ui->dw_third_label_digit->text());
@@ -88,11 +87,16 @@ void A429DiscreteWordWidget::swapLabelDigits()
     // TO DO: ADAPT POSITION OF QLABELS
 }
 
-void A429DiscreteWordWidget::parityValidity(const bool& isValid)
+void A429DwWidget::parityValidity(const bool& isValid)
 {
     if (isValid) {
         ui->dw_parity_value->setStyleSheet("QLabel { color : green;}");
     } else {
         ui->dw_parity_value->setStyleSheet("QLabel { color : red;}");
     }
+}
+
+Ui::A429DwWidget *A429DwWidget::getUi() const
+{
+    return ui;
 }

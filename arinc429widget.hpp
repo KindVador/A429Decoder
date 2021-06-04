@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QPushButton>
+#include "a429dwwidget.hpp"
 #include "a429bnrwidget.hpp"
 
 namespace Ui {
@@ -57,6 +58,7 @@ signals:
 private:
     Ui::Arinc429Widget *ui;
     Ui::A429BnrWidget *bnrWidget;
+    Ui::A429DwWidget *dwWidget;
 };
 
 #endif // ARINC429WIDGET_H

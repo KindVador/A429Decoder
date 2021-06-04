@@ -26,7 +26,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>24</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -63,7 +63,7 @@
   <customwidget>
    <class>Arinc429Widget</class>
    <extends>QWidget</extends>
-   <header location="global">arinc429widget.h</header>
+   <header location="global">arinc429widget.hpp</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

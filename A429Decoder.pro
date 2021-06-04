@@ -10,20 +10,20 @@ CONFIG += c++11
 
 SOURCES += \
     a429bnrwidget.cpp \
-    a429discretewordwidget.cpp \
+    a429dwwidget.cpp \
     arinc429widget.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     a429bnrwidget.hpp \
-    a429discretewordwidget.hpp \
+    a429dwwidget.hpp \
     arinc429widget.hpp \
     mainwindow.hpp
 
 FORMS += \
     a429bnrwidget.ui \
-    a429discretewordwidget.ui \
+    a429dwwidget.ui \
     arinc429widget.ui \
     mainwindow.ui
 
