@@ -169,6 +169,20 @@ QPushButton *Arinc429Widget::getPushButtonForBit(const int bitNumber)
     return button;
 }
 
+void Arinc429Widget::showDwBlock(const bool &state)
+{
+    ui->labelDW->setVisible(state);
+    ui->DwWidget->setVisible(state);
+    ui->lineUnderDw->setVisible(state);
+}
+
+void Arinc429Widget::showBnrBlock(const bool &state)
+{
+    ui->labelBNR->setVisible(state);
+    ui->BnrWidget->setVisible(state);
+    ui->lineUnderBnr->setVisible(state);
+}
+
 void Arinc429Widget::parityValidity(const bool& isValid)
 {
     if (isValid) {
@@ -207,4 +221,3 @@ void Arinc429Widget::updateBnrDefinition()
     bnrWidget->bnr_msb_spin_box->setMinimum(bnrWidget->bnr_lsb_spin_box->value());
     bnrWidget->bnr_lsb_spin_box->setMaximum(bnrWidget->bnr_msb_spin_box->value());
 }
-

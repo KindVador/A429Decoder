@@ -24,6 +24,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->a429widget, SIGNAL(bnrIsSignedChanged(int)), this, SLOT(updateBnrIsSignedValue(int)));
     connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(showAboutWindow()));
     connect(ui->a429widget, SIGNAL(parityTypeChanged(int)), this, SLOT(parityTypeChanged(int)));
+    connect(ui->actionDW, SIGNAL(triggered(bool)), this,SLOT(showDwBlock(bool)));
+    connect(ui->actionBNR, SIGNAL(triggered(bool)), this,SLOT(showBnrBlock(bool)));
 
     // init raw value
     ui->a429widget->setRawValue(QString("00000000"));
@@ -70,6 +72,16 @@ void MainWindow::showAboutWindow()
     msgBox.setIcon(QMessageBox::Information);
     msgBox.setText("version: 2021.1\n\nSource code available at https://github.com/KindVador/A429Decoder\n\nPlease report any issue by opening a PR in the GitHub repository.\n\nIcons by Freepik https://www.freepik.com");
     msgBox.exec();
+}
+
+void MainWindow::showDwBlock(const bool &state)
+{
+    ui->a429widget->showDwBlock(state);
+}
+
+void MainWindow::showBnrBlock(const bool &state)
+{
+    ui->a429widget->showBnrBlock(state);
 }
 
 void MainWindow::valueChangedAction(const QString &newValue)

@@ -34,6 +34,8 @@ public:
     double getBnrRangeValue();
     void displayBnrValue(const double value);
     QPushButton *getPushButtonForBit(const int bitNumber);
+    void showDwBlock(const bool& state);
+    void showBnrBlock(const bool& state);
 
 public slots:
     void parityValidity(const bool& isValid);

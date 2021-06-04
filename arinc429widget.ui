@@ -334,7 +334,7 @@
     </layout>
    </item>
    <item>
-    <spacer name="verticalSpacer_4">
+    <spacer name="spacerUnderDw">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
@@ -350,7 +350,7 @@
     </spacer>
    </item>
    <item>
-    <widget class="Line" name="line_72">
+    <widget class="Line" name="lineUnderDw">
      <property name="frameShadow">
       <enum>QFrame::Plain</enum>
      </property>
@@ -410,7 +410,7 @@
     </layout>
    </item>
    <item>
-    <spacer name="verticalSpacer_6">
+    <spacer name="spacerUnderBnr">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
@@ -426,7 +426,7 @@
     </spacer>
    </item>
    <item>
-    <widget class="Line" name="line_76">
+    <widget class="Line" name="lineUnderBnr">
      <property name="frameShadow">
       <enum>QFrame::Plain</enum>
      </property>
