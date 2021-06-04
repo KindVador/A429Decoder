@@ -21,14 +21,15 @@ Arinc429Widget::Arinc429Widget(QWidget *parent) :
     ui->lineEdit->setInputMask("HHHHHHHH");
 
     // init of the BNR block
-    ui->bnr_msb_spin_box->setValue(28);
-    ui->bnr_msb_spin_box->setMaximum(32);
-    ui->bnr_msb_spin_box->setMinimum(9);
-    ui->bnr_lsb_spin_box->setValue(11);
-    ui->bnr_lsb_spin_box->setMaximum(32);
-    ui->bnr_lsb_spin_box->setMinimum(9);
-    ui->bnr_resolution_spin_box->setValue(1.0);
-    ui->bnr_resolution_spin_box->setDecimals(10);
+    bnrWidget = ui->BnrWidget->getUi();
+    bnrWidget->bnr_msb_spin_box->setValue(28);
+    bnrWidget->bnr_msb_spin_box->setMaximum(32);
+    bnrWidget->bnr_msb_spin_box->setMinimum(9);
+    bnrWidget->bnr_lsb_spin_box->setValue(11);
+    bnrWidget->bnr_lsb_spin_box->setMaximum(32);
+    bnrWidget->bnr_lsb_spin_box->setMinimum(9);
+    bnrWidget->bnr_resolution_spin_box->setValue(1.0);
+    bnrWidget->bnr_resolution_spin_box->setDecimals(10);
 
     // make connections
     connect(ui->lineEdit, SIGNAL(textChanged(QString)), this, SLOT(inputValueChanged(QString)));
@@ -41,16 +42,16 @@ Arinc429Widget::Arinc429Widget(QWidget *parent) :
     }
 
     // BNR block
-    connect(ui->bnr_msb_spin_box, SIGNAL(valueChanged(int)), this, SLOT(updateBnrDefinition()));
-    connect(ui->bnr_lsb_spin_box, SIGNAL(valueChanged(int)), this, SLOT(updateBnrDefinition()));
-    connect(ui->bnr_resolution_spin_box, SIGNAL(valueChanged(double)), this, SLOT(updateBnrDefinition()));
-    connect(ui->bnr_range_spin_box, SIGNAL(valueChanged(double)), this, SLOT(updateBnrDefinition()));
-    connect(ui->signed_check_box, SIGNAL(stateChanged(int)), this, SLOT(updateBnrDefinition()));
-    connect(ui->bnr_msb_spin_box, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int value){qDebug() << "--> SIGNAL bnrMsbChanged(" << value << ")"; emit bnrMsbChanged(value); });
-    connect(ui->bnr_lsb_spin_box, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int value){qDebug() << "--> SIGNAL bnrLsbChanged(" << value << ")"; emit bnrLsbChanged(value); });
-    connect(ui->bnr_resolution_spin_box, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, [=](double value){qDebug() << "--> SIGNAL bnrResolutionChanged(" << value << ")"; emit bnrResolutionChanged(value); });
-    connect(ui->bnr_range_spin_box, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, [=](double value){qDebug() << "--> SIGNAL bnrRangeChanged(" << value << ")"; emit bnrRangeChanged(value); });
-    connect(ui->signed_check_box, &QCheckBox::stateChanged, this, [=](int state){qDebug() << "--> SIGNAL bntIsSignedChnaged(" << state << ")"; emit bnrIsSignedChanged(state); });
+    connect(bnrWidget->bnr_msb_spin_box, SIGNAL(valueChanged(int)), this, SLOT(updateBnrDefinition()));
+    connect(bnrWidget->bnr_lsb_spin_box, SIGNAL(valueChanged(int)), this, SLOT(updateBnrDefinition()));
+    connect(bnrWidget->bnr_resolution_spin_box, SIGNAL(valueChanged(double)), this, SLOT(updateBnrDefinition()));
+    connect(bnrWidget->bnr_range_spin_box, SIGNAL(valueChanged(double)), this, SLOT(updateBnrDefinition()));
+    connect(bnrWidget->signed_check_box, SIGNAL(stateChanged(int)), this, SLOT(updateBnrDefinition()));
+    connect(bnrWidget->bnr_msb_spin_box, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int value){qDebug() << "--> SIGNAL bnrMsbChanged(" << value << ")"; emit bnrMsbChanged(value); });
+    connect(bnrWidget->bnr_lsb_spin_box, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int value){qDebug() << "--> SIGNAL bnrLsbChanged(" << value << ")"; emit bnrLsbChanged(value); });
+    connect(bnrWidget->bnr_resolution_spin_box, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, [=](double value){qDebug() << "--> SIGNAL bnrResolutionChanged(" << value << ")"; emit bnrResolutionChanged(value); });
+    connect(bnrWidget->bnr_range_spin_box, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, [=](double value){qDebug() << "--> SIGNAL bnrRangeChanged(" << value << ")"; emit bnrRangeChanged(value); });
+    connect(bnrWidget->signed_check_box, &QCheckBox::stateChanged, this, [=](int state){qDebug() << "--> SIGNAL bntIsSignedChnaged(" << state << ")"; emit bnrIsSignedChanged(state); });
 }
 
 Arinc429Widget::~Arinc429Widget()
@@ -120,42 +121,42 @@ QPushButton *Arinc429Widget::getTextFieldForBit(const int i)
 
 unsigned int Arinc429Widget::getBnrMsbPosition()
 {
-    return ui->bnr_msb_spin_box->value();
+    return bnrWidget->bnr_msb_spin_box->value();
 }
 
 unsigned int Arinc429Widget::getBnrLsbPosition()
 {
-    return ui->bnr_lsb_spin_box->value();
+    return bnrWidget->bnr_lsb_spin_box->value();
 }
 
 double Arinc429Widget::getBnrResolution()
 {
-    return ui->bnr_resolution_spin_box->value();
+    return bnrWidget->bnr_resolution_spin_box->value();
 }
 
 bool Arinc429Widget::getBnrIsSigned()
 {
-    return ui->signed_check_box->isChecked();
+    return bnrWidget->signed_check_box->isChecked();
 }
 
 void Arinc429Widget::setBnrResolutionValue(const double newValue)
 {
-    ui->bnr_resolution_spin_box->setValue(newValue);
+    bnrWidget->bnr_resolution_spin_box->setValue(newValue);
 }
 
 void Arinc429Widget::setBnrRangeValue(const double newValue)
 {
-    ui->bnr_range_spin_box->setValue(newValue);
+    bnrWidget->bnr_range_spin_box->setValue(newValue);
 }
 
 double Arinc429Widget::getBnrRangeValue()
 {
-    return ui->bnr_range_spin_box->value();
+    return bnrWidget->bnr_range_spin_box->value();
 }
 
 void Arinc429Widget::displayBnrValue(const double value)
 {
-    ui->bnr_industrial_value_lcd->display(value);
+    bnrWidget->bnr_industrial_value_lcd->display(value);
 }
 
 QPushButton *Arinc429Widget::getPushButtonForBit(const int bitNumber)
@@ -200,7 +201,7 @@ void Arinc429Widget::labelMsbFirstChanged(const int& state)
 void Arinc429Widget::updateBnrDefinition()
 {
     // update spinboxes limits to avoid MSB < LSB
-    ui->bnr_msb_spin_box->setMinimum(ui->bnr_lsb_spin_box->value());
-    ui->bnr_lsb_spin_box->setMaximum(ui->bnr_msb_spin_box->value());
+    bnrWidget->bnr_msb_spin_box->setMinimum(bnrWidget->bnr_lsb_spin_box->value());
+    bnrWidget->bnr_lsb_spin_box->setMaximum(bnrWidget->bnr_msb_spin_box->value());
 }
 

@@ -9,17 +9,20 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    a429bnrwidget.cpp \
     a429discretewordwidget.cpp \
     arinc429widget.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
+    a429bnrwidget.hpp \
     a429discretewordwidget.hpp \
     arinc429widget.hpp \
     mainwindow.hpp
 
 FORMS += \
+    a429bnrwidget.ui \
     a429discretewordwidget.ui \
     arinc429widget.ui \
     mainwindow.ui
