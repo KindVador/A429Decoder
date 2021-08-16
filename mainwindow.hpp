@@ -23,6 +23,7 @@ public slots:
     void showAboutWindow();
     void showDwBlock(const bool& state);
     void showBnrBlock(const bool& state);
+    void showBcdBlock(const bool& state);
 
 private slots:
     void valueChangedAction(const QString& newValue);

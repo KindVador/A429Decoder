@@ -183,6 +183,13 @@ void Arinc429Widget::showBnrBlock(const bool &state)
     ui->lineUnderBnr->setVisible(state);
 }
 
+void Arinc429Widget::showBcdBlock(const bool &state)
+{
+    ui->labelBCD->setVisible(state);
+    ui->BcdWidget->setVisible(state);
+//    ui->lineUnderBcd->setVisible(state);
+}
+
 void Arinc429Widget::parityValidity(const bool& isValid)
 {
     if (isValid) {
