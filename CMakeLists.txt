@@ -31,17 +31,12 @@ set(PROJECT_SOURCES
         arinc429widget.ui
         mainwindow.ui
         resources.qrc
-        a429word.hpp
-        a429word.cpp
-        a429bnrword.hpp
-        a429bnrword.cpp
-        a429bcdword.hpp
-        a429bcdword.cpp
 )
 
-#add_library(A429Library STATIC ../A429Library/a429word.hpp ../A429Library/a429word.cpp
-#                               ../A429Library/a429bnrword.hpp ../A429Library/a429bnrword.cpp
-#                               ../A429Library/a429bcdword.hpp ../A429Library/a429bcdword.cpp)
+include_directories(../A429Library)
+add_library(A429Library STATIC ../A429Library/a429word.hpp ../A429Library/a429word.cpp
+                               ../A429Library/a429bnrword.hpp ../A429Library/a429bnrword.cpp
+                               ../A429Library/a429bcdword.hpp ../A429Library/a429bcdword.cpp)
 
 if(QT_VERSION_MAJOR GREATER_EQUAL 6)
     qt_add_executable(A429Decoder MANUAL_FINALIZATION ${PROJECT_SOURCES})
@@ -53,7 +48,7 @@ else()
     endif()
 endif()
 
-#target_link_libraries(A429Decoder PUBLIC A429Library)
+target_link_libraries(A429Decoder PUBLIC A429Library)
 
 # Since Qt 5.15, the CMake targets are also available as Qt::Core, Qt::Gui, and so on.
 # This eases writing CMake code that can work with both Qt 5 and Qt 6.
