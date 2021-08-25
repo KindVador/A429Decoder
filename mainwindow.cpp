@@ -26,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->a429widget, SIGNAL(parityTypeChanged(int)), this, SLOT(parityTypeChanged(int)));
     connect(ui->actionDW, SIGNAL(triggered(bool)), this,SLOT(showDwBlock(bool)));
     connect(ui->actionBNR, SIGNAL(triggered(bool)), this,SLOT(showBnrBlock(bool)));
+    connect(ui->actionBCD, SIGNAL(triggered(bool)), this, SLOT(showBcdBlock(bool)));
 
     // init raw value
     ui->a429widget->setRawValue(QString("00000000"));
@@ -82,6 +83,11 @@ void MainWindow::showDwBlock(const bool &state)
 void MainWindow::showBnrBlock(const bool &state)
 {
     ui->a429widget->showBnrBlock(state);
+}
+
+void MainWindow::showBcdBlock(const bool &state)
+{
+    ui->a429widget->showBcdBlock(state);
 }
 
 void MainWindow::valueChangedAction(const QString &newValue)

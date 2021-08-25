@@ -36,6 +36,7 @@ public:
     QPushButton *getPushButtonForBit(const int bitNumber);
     void showDwBlock(const bool& state);
     void showBnrBlock(const bool& state);
+    void showBcdBlock(const bool& state);
 
 public slots:
     void parityValidity(const bool& isValid);

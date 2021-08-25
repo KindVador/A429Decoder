@@ -19,7 +19,7 @@
   <property name="windowTitle">
    <string>A429Widget</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2">
+  <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <layout class="QHBoxLayout" name="HexadecimalLayout">
      <item>
@@ -439,6 +439,60 @@
     </widget>
    </item>
    <item>
+    <spacer name="verticalSpacer_4">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>5</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="vLayoutBCD">
+     <item>
+      <layout class="QHBoxLayout" name="hLayoutLabelBCD">
+       <item>
+        <widget class="QLabel" name="labelBCD">
+         <property name="text">
+          <string>Binary Coded Decimal (BCD):</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_10">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="A429BcdWidget" name="BcdWidget" native="true">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -464,6 +518,12 @@
    <class>A429DwWidget</class>
    <extends>QWidget</extends>
    <header>a429dwwidget.hpp</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>A429BcdWidget</class>
+   <extends>QWidget</extends>
+   <header>a429bcdwidget.hpp</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

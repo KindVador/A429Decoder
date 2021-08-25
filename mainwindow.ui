@@ -26,7 +26,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -47,6 +47,7 @@
     </property>
     <addaction name="actionDW"/>
     <addaction name="actionBNR"/>
+    <addaction name="actionBCD"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuWindow"/>
@@ -86,6 +87,17 @@
    </property>
    <property name="text">
     <string>BNR</string>
+   </property>
+  </action>
+  <action name="actionBCD">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>BCD</string>
    </property>
   </action>
  </widget>
